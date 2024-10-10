@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block extra_head %}
+<style>
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        margin: auto;
+    }
+
+    .login-card {
+        background: var(--card-color);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+    .subtitle {
+        color: var(--text-color);
+        margin-bottom: 30px;
+        font-weight: 300;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        text-align: left;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--text-color);
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid var(--input-border);
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        background-color: #F7FAFC;
+        outline: none;
+    }
+
+    .login-form input[type="text"]:focus,
+    .login-form input[type="password"]:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.2);
+    }
+
+    .submit-btn {
+        background-color: var(--primary-color);
+        color: rgb(8, 8, 8);
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        font-weight: 500;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .submit-btn:hover {
+        background-color: #5A52D5;
+        transform: translateY(-2px);
+    }
+
+    .register-link {
+        margin-top: 20px;
+        color: var(--text-color);
+        font-size: 14px;
+    }
+
+    .register-link a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .register-link a:hover {
+        color: #FF4F75;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+        .login-container {
+            padding: 10px;
+        }
+
+        .login-card {
+            padding: 30px 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Please login to your account</p>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+            </div>
+            <button type="submit" class="submit-btn">Login</button> <!-- Corrected class name -->
+        </form>
+        <p class="register-link">Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+    </div>
+</div>
+{% endblock %}

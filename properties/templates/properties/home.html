@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<style>
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50vh; /* Full viewport height */
+        background: url('{% static "images/image-6.jpg" %}') no-repeat center center/cover; /* Background image */
+        color: rgb(202, 168, 56);
+        text-align: center;
+        padding: 20px;
+        position: relative;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem; /* Responsive font size */
+        margin: 0;
+        padding: 10px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for better visibility */
+    }
+
+    .hero-section p {
+        font-size: 1.5rem; /* Responsive font size */
+        margin: 10px 0 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    .view-properties-btn {
+        background-color: #6C63FF; /* Button color */
+        color: white; /* Text color */
+        padding: 15px 30px; /* Padding */
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        text-decoration: none; /* Remove underline */
+        font-size: 1.2rem; /* Font size */
+        transition: background-color 0.3s; /* Smooth background transition */
+    }
+
+    .view-properties-btn:hover {
+        background-color: #5a54e0; /* Darker button on hover */
+    }
+
+    /* Section Styles */
+    .info-section {
+        padding: 40px 20px; /* Padding for section */
+        background-color: #f9f9f9; /* Light background */
+        text-align: center;
+    }
+
+    .info-section h2 {
+        font-size: 2rem; /* Section heading size */
+        color: #333; /* Darker color for heading */
+        margin-bottom: 20px; /* Space below heading */
+    }
+
+    .card {
+        background-color: #ffffff; /* White background for cards */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for cards */
+        padding: 20px; /* Padding inside cards */
+        margin: 10px; /* Space between cards */
+        flex: 1; /* Flexible growth */
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack content vertically */
+    }
+
+    .card h3 {
+        font-size: 1.5rem; /* Card title size */
+        color: #6C63FF; /* Primary color for titles */
+    }
+
+    .card p {
+        font-size: 1rem; /* Paragraph size */
+        color: #555; /* Grey text color */
+    }
+
+    .tech-section {
+        display: flex;
+        flex-wrap: wrap; /* Wrap cards on small screens */
+        justify-content: center; /* Center the cards */
+        margin-top: 40px; /* Space above technology section */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem; /* Adjust font size for mobile */
+        }
+
+        .hero-section p {
+            font-size: 1.2rem; /* Adjust font size for mobile */
+        }
+
+        .view-properties-btn {
+            padding: 12px 25px; /* Adjust padding for mobile */
+            font-size: 1rem; /* Adjust font size for mobile */
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem; /* Adjust heading size */
+        }
+
+        .card {
+            margin: 10px 5px; /* Smaller margin for mobile */
+        }
+
+        .card h3 {
+            font-size: 1.2rem; /* Adjust card title size */
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1>Welcome to Urban Residential Properties</h1>
+    <p>Find your dream home today!</p>
+    <a href="{% url 'property_list' %}" class="view-properties-btn">View Properties</a>
+</div>
+
+<div class="info-section">
+    <h2>Why Choose Us?</h2>
+    <div class="info-cards">
+        <div class="card">
+            <h3>Comprehensive Property Listings</h3>
+            <p>Explore a wide range of properties for sale or rent with detailed descriptions and images.</p>
+        </div>
+        <div class="card">
+            <h3>User-Friendly Interface</h3>
+            <p>Our platform is designed to provide a seamless experience with easy navigation and access to features.</p>
+        </div>
+        <div class="card">
+            <h3>AI-Driven Recommendations</h3>
+            <p>Get personalized property suggestions based on your preferences and browsing history.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
